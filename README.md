@@ -1,5 +1,5 @@
 # AbhinEngine
-AbhinEngine 1.0 — New Rust engine with NNUE, 3500 Lichess Rapid, seeking CCRL testing
+AbhinEngine 1.0 — New Rust engine with NNUE, seeking CCRL testing
 
 
 AbhinEngine 1.0 — Release Post
@@ -20,7 +20,7 @@ Full UCI protocol
 
 Strength:
 
-~3100 Lichess bullet rating after 100 games
+Lichess bullet rating after 100 games
 Consistently beats 1500+ human players
 
 Author: Abhin (India) 🇮🇳
