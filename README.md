@@ -116,7 +116,6 @@ Once set up in any GUI:
 ## Author
 
 **Abhin** — Student developer, India 🇮🇳  
-Classical musician (Hindustani vocal) and AI/tech enthusiast.
 
 ---
 
