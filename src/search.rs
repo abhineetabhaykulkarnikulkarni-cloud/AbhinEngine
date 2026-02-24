@@ -91,6 +91,11 @@ impl TT {
     pub fn clear(&mut self) {
         for e in &mut self.data { e.depth = 0; }
     }
+    pub fn resize(&mut self, mb: usize) {
+        let sz = (mb * 1024 * 1024 / std::mem::size_of::<TTEntry>()).next_power_of_two();
+        self.data = vec![TTEntry { hash:0, depth:0, score:0, flag:0, mv: crate::board::Move::null() }; sz];
+        self.mask = sz - 1;
+    }
 }
 
 // ── Search engine ─────────────────────────────────────────────────────────────
