@@ -22,13 +22,19 @@ fn main() {
 
         match line {
             "uci" => {
-                println!("id name AbhinEngine 1.0");
+                println!("id name AbhinEngine 1.0.1");
                 println!("id author Abhin");
                 println!("option name Hash type spin default 64 min 1 max 512");
                 println!("option name Ponder type check default false");
                 println!("uciok");
             }
             "isready"    => println!("readyok"),
+            _ if line.starts_with("setoption name Hash value") => {
+                let parts: Vec<&str> = line.split_whitespace().collect();
+                if let Some(mb) = parts.last().and_then(|s| s.parse::<usize>().ok()) {
+                    engine.tt.resize(mb);
+                }
+            }
             "ucinewgame" => {
                 board = Board::start_pos();
                 engine.clear();
@@ -79,7 +85,7 @@ fn pick_time(line: &str, board: &Board) -> (u8, u64) {
 
     let clock_ms = get_val(&parts, time_key).unwrap_or(10_000);
     let inc_ms   = get_val(&parts, inc_key).unwrap_or(0);
-    let movestogo = get_val(&parts, movestogo_key).unwrap_or(30);
+    let movestogo = get_val(&parts, movestogo_key).unwrap_or(25);
 
     // How much time to spend this move:
     // Use clock/movestogo + a fraction of increment
